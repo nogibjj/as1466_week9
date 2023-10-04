@@ -1,7 +1,21 @@
-from main import basic_two_calculation
+"""
+Test goes here
 
-def test_main():
-    assert basic_two_calculation(1,2) == 3
-    assert basic_two_calculation(10,10) == 20
+"""
 
-test_main()
+from mylib.query import query
+
+
+def test_query():
+    """Test the query function"""
+    #assert query("SELECT COUNT(*) FROM table1") == [(36556,)]
+
+    pass
+
+
+def test_extract():
+    pass
+
+
+def test_transform_load():
+    pass
