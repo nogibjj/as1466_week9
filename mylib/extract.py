@@ -8,7 +8,7 @@ import requests
 
 
 def extract(
-    url="https://raw.githubusercontent.com/nogibjj/as1466_Week5-assignment/main/data/life_expectancy.csv",
+    url="https://raw.githubusercontent.com/nogibjj/as1466_sqlite_lab/main/life%20expectancy%202.csv",
     file_path="data/life_expectancy.csv",
 ):
     """ "Extract a url to a file path"""
