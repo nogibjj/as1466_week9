@@ -16,5 +16,3 @@ matplotlib==3.6.0
 seaborn==0.12.0
 fire==0.5.0
 requests
-fire
-sqlite3
