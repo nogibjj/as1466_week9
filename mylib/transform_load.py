@@ -7,7 +7,7 @@ import sqlite3
 import pandas as pd
 
 
-def load(the_query):
+def load():
     dataset = "data/life_expectancy.csv"
     df = pd.read_csv(dataset)
     database_path = "/workspaces/as1466_sqlite_lab/LifeDB.db"
@@ -15,7 +15,7 @@ def load(the_query):
    
     df.to_sql("table1", connect, if_exists="replace", index=False)
     cursor = connect.cursor()
-    cursor.execute(the_query)
+    #cursor.execute(the_query)
     connect.commit()
     connect.close()
   
