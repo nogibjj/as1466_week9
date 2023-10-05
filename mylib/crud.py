@@ -35,7 +35,9 @@ def read(query, db_name='LifeDB.db'):
 
 
 def update(query, db_name='LifeDB.db'):
+    #conn.isolation_level = None
     connection = sqlite3.connect(db_name)
+    connection.isolation_level = None
     cursor = connection.cursor()
 
     # Execute the update query
@@ -53,10 +55,31 @@ def update(query, db_name='LifeDB.db'):
 
     # Execute a SELECT query to retrieve the updated record
     select_query = f"SELECT * FROM {table_name} WHERE {condition}"
+
     cursor.execute(select_query)
     updated_record = cursor.fetchone()
     print(updated_record)
     connection.commit()
+    
+    df = pd.read_sql_query(select_query, connection)
+
+    # Close the database connection
+    connection.close()
+
+    # Make changes to the DataFrame (if needed)
+    # For example, you can manipulate the DataFrame here
+
+    # Connect to the same SQLite database again
+    conn = sqlite3.connect(db_name)
+
+    # Write the DataFrame back to a table in the same database
+    new_table_name = table_name
+    df.to_sql(new_table_name, conn, if_exists='replace', index=False)
+
+    # Close the database connection
+    conn.close()
+    
+    
     
 
     # Print the updated record
@@ -69,12 +92,16 @@ def update(query, db_name='LifeDB.db'):
     connection.close()
 
 
-def delete(query, db_name='lifeDB.db'):
+def delete(query, db_name='LifeDB.db'):
+    
     connection = sqlite3.connect(db_name)
+    connection.isolation_level = None
     cursor = connection.cursor()
     cursor.execute(query)
+
     connection.commit()
     connection.close()
+    print ('Entry deleted')
     return 'Entry deleted'
 
 def insert(query,  db_name='LifeDB.db'):
