@@ -75,6 +75,7 @@ def delete(query, db_name='lifeDB.db'):
     cursor.execute(query)
     connection.commit()
     connection.close()
+    return 'Entry deleted'
 
 def insert(query,  db_name='LifeDB.db'):
     connection = sqlite3.connect(db_name)

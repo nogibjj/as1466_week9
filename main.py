@@ -6,10 +6,17 @@ import argparse
 from mylib.extract import extract
 from mylib.transform_load import load
 from mylib.query import query
-from mylib.crud import create, read, drop, update 
+from mylib.crud import create, read, drop, update , delete
 
 
 def main(operation, query_string=None):
+    extract()
+    print ('extracting')
+    load()
+    print ('loading')
+    create()
+    print('creating')
+
     if operation == 'query':
         # Extract
         print("Extracting data...")
@@ -30,6 +37,8 @@ def main(operation, query_string=None):
         read(query_string)
     elif operation == 'update': 
         update(query_string)
+    elif operation == 'delete': 
+        delete(query_string)
         
 
 
